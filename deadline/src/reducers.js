@@ -31,8 +31,6 @@ export function rootReducer(state = initialState, { type, payload }) {
 
     case 'REMOVE_TODO':
       return state.map((item) => {
-        console.log(payload, item);
-
         return {
           ...item,
           todos: item.todos.filter((todo) => todo.id !== payload),

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export function SingleTodo(title, completed, id, removeSingleTodo) {
+export function SingleTodo({ title, completed, id, removeSingleTodo }) {
   const [checked, setChecked] = useState(completed);
 
   return (

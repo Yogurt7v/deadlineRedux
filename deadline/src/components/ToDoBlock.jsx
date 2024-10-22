@@ -3,7 +3,7 @@ import { SingleTodo } from './SingleTodo';
 import { useDispatch } from 'react-redux';
 import { addSingleTodoAction, removeSingleTodoAction } from '../actions.js';
 
-export function ToDoBlock(state, title, id, removeTodoList) {
+export function ToDoBlock({ state, title, id, removeTodoList }) {
   const [singleTodoTitle, setSingleTodoTitle] = useState('');
   const [todo, setTodo] = useState([]);
   const dispatch = useDispatch();
@@ -17,7 +17,10 @@ export function ToDoBlock(state, title, id, removeTodoList) {
   }
 
   useEffect(() => {
-    setTodo(state.filter((item) => item.id === id)[0].todos);
+    const blockTodos = state.find((item) => item.id === id)?.todos;
+    if (blockTodos) {
+      setTodo(blockTodos);
+    }
   }, [state, id]);
 
   return (
