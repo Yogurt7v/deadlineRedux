@@ -29,6 +29,9 @@ export function rootReducer(state = initialState, { type, payload }) {
         return item;
       });
 
+    case 'FROM_COOKIE':
+      return payload;
+
     case 'REMOVE_TODO':
       return state.map((item) => {
         return {

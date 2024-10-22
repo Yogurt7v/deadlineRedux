@@ -1,11 +1,21 @@
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from '../reducers';
+import hardSet from 'redux-persist/lib/stateReconciler/hardSet';
 
-const store = createStore(
+const mainReducer = combineReducers({
   rootReducer,
-  composeWithDevTools()
-  // Add any other middleware or enhancers here
-);
+});
 
-export default store;
+const persistConfig = {
+  key: 'root',
+  storage,
+  stateReconciler: hardSet,
+};
+
+const persistedReducer = persistReducer(persistConfig, mainReducer);
+
+export const store = createStore(persistedReducer, composeWithDevTools());
+export const persistor = persistStore(store);

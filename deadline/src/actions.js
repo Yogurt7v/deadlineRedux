@@ -25,3 +25,10 @@ export function removeSingleTodoAction(id) {
     payload: id,
   };
 }
+
+export function stateFromLocalStorageAction(payload) {
+  return {
+    type: 'FROM_COOKIE',
+    payload,
+  };
+}

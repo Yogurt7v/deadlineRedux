@@ -4,15 +4,17 @@ import { MainBlock } from './components/MainBlock';
 import { ToDoBlock } from './components/ToDoBlock';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { removeTodoListAction } from './actions';
+import { removeTodoListAction, stateFromLocalStorageAction } from './actions';
 
 function App() {
   const [allTodoBlocks, setAllTodoBlocks] = useState([]);
-  const state = useSelector((state) => state);
-  const dispatch = useDispatch();
 
+  const state = useSelector((state) => state.rootReducer);
+  const dispatch = useDispatch();
   useEffect(() => {
-    setAllTodoBlocks(state);
+    if (state.length > 0) {
+      setAllTodoBlocks(state);
+    }
   }, [state]);
 
   function removeTodoList(id) {
