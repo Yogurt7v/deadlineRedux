@@ -4,7 +4,7 @@ import { MainBlock } from './components/MainBlock';
 import { ToDoBlock } from './components/ToDoBlock';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { removeTodoListAction, stateFromLocalStorageAction } from './actions';
+import { removeTodoListAction } from './actions';
 
 function App() {
   const [allTodoBlocks, setAllTodoBlocks] = useState([]);
@@ -14,6 +14,8 @@ function App() {
   useEffect(() => {
     if (state.length > 0) {
       setAllTodoBlocks(state);
+    } else {
+      setAllTodoBlocks([]);
     }
   }, [state]);
 

@@ -11,7 +11,6 @@ export function SingleTodo({ title, completed, id, removeSingleTodo }) {
         id=""
         value={checked}
         onChange={() => {
-          console.log(checked);
           setChecked(!checked);
         }}
       />

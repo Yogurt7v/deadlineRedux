@@ -13,7 +13,7 @@ export function MainBlock() {
 
   return (
     <div className="main-block">
-      <h1>Создать тудулист</h1>
+      <h1>Создать задание</h1>
       <div className="form">
         <input
           type="text"
@@ -26,7 +26,7 @@ export function MainBlock() {
           onClick={() => addTodoListButton(todoListName)}
           disabled={todoListName.length === 0}
         >
-          Добавить тудулист
+          Добавить
         </button>
       </div>
     </div>

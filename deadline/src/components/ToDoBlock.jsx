@@ -17,10 +17,8 @@ export function ToDoBlock({ state, title, id, removeTodoList }) {
   }
 
   useEffect(() => {
-    const blockTodos = state.find((item) => item.id === id)?.todos;
-    if (blockTodos) {
-      setTodo(blockTodos);
-    }
+    const blockTodos = state.find((item) => item.id === id)?.todos || [];
+    setTodo(blockTodos);
   }, [state, id]);
 
   return (
